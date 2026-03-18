@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .gender {
+            margin: 10px 0;
+        }
+
+        .gender label {
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Product Form</h2>
+
+    <form method="POST">
+        
+
+        {% csrf_token %}
+        
+        <input type="text" name="name" placeholder="Product Name" required>
+        <textarea name="description" placeholder="Product Description" required></textarea>
+
+        
+        <input type="text" name="color" placeholder="Color">
+
+        <!-- Gender -->
+        <div class="gender">
+            <label><b>Gender:</b></label><br>
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+        </div>
+
+        <!-- Quality -->
+        <select name="quality">
+            <option value="">Select Quality</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+
+        <!-- Price -->
+        <input type="number" name="price" placeholder="Price" required>
+
+        <!-- Category -->
+        <select name="category">
+            <option value="">Select Category</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="shoes">Shoes</option>
+            <option value="other">Other</option>
+        </select>
+
+        <!-- Submit -->
+        <button type="submit" {% url 'show.html' %}>Submit</button>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Products</title>
+</head>
+<body>
+
+<h2>All Products</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Color</th>
+        <th>Gender</th>
+        <th>Quality</th>
+        <th>Price</th>
+        <th>Category</th>
+    </tr>
+
+    {% for i in data %}
+    <tr>
+        <td>{{ i.name }}</td>
+        <td>{{ i.description }}</td>
+        <td>{{ i.color }}</td>
+        <td>{{ i.gender }}</td>
+        <td>{{ i.quality }}</td>
+        <td>{{ i.price }}</td>
+        <td>{{ i.category }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
