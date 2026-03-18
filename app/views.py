@@ -21,7 +21,7 @@ def landing(request):
             category=category
         )
 
-        return redirect('show.')   # 👈 yaha bhej raha hai dusre page pe
+        return redirect('show')   # 👈 yaha bhej raha hai dusre page pe
 
     return render(request, 'landing.html')
 
@@ -29,3 +29,32 @@ def landing(request):
 def show(request):
     data = Product.objects.all()
     return render(request, 'show.html', {'data': data})
+
+
+
+def save(req,pk):
+    cart=req.session.get('cart',[])
+    print(cart)
+    if pk in cart:
+        data = Product.objects.all()
+        return render(req,'show.html',{'data':data})
+    else:
+        cart.append(pk)
+        print(cart)
+        req.session['cart']=cart
+        data = Product.objects.all()
+        return render(req,'show.html',{'data':data})
+
+
+def show_cart(req):
+    return render(req,'show_cart.html')
+
+def delete(req,pk):
+    data=Product.objects.get(pk=id)
+    data.delete()
+    return redirect('show_cart')
+
+
+
+    
+    

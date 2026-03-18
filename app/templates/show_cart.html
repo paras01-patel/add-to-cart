@@ -16,7 +16,9 @@
         <th>Quality</th>
         <th>Price</th>
         <th>Category</th>
-        <th>action</th>
+        <th>delete</th>
+        <th>edit</th>
+
 
     </tr>
 
@@ -29,7 +31,9 @@
         <td>{{ i.quality }}</td>
         <td>{{ i.price }}</td>
         <td>{{ i.category }}</td>
-        <td><a href="{% url 'save' pk=i.id %}"><button>Add to cart</button></a> </td>
+        <td><a href="{% url 'delete' pk=i.id %}"><button>delete</button></a> </td>
+        <td><a href="{% url 'total' pk=i.id %}"><button>total</button></a> </td>
+
     </tr>
     {% endfor %}
 

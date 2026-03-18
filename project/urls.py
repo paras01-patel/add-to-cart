@@ -18,7 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',views.landing,name='landing')
+    path('', views.landing, name='landing'),
+    path('show/', views.show, name='show'),
+    path('save/<int:pk>/',views.save,name='save'),
+    path('show_cart',views.show_cart,name='show_cart'),
+    path('deete/<int:pk>/',views.delete,name='delete')
+    
+    
 ]
