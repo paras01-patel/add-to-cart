@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            width: 250px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        .card h3 {
+            margin: 0;
+        }
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">all product</h2>
+<button><a href={% url 'my_cart'  %}>my_cart</a></button>
+{{count}}
+<div class="container">
+    {% for p in data %}
+        <div class="card">
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.description }}</p>
+            <p><b>Color:</b> {{ p.color }}</p>
+            <p><b>Quantity:</b> {{ p.quantity }}</p>
+            <p class="price">₹{{ p.price }}</p>
+            <p><b>Category:</b> {{ p.category }}</p>
+            <p><b>action:</b> <a href={% url 'save' pk=p.id %}>add_to_cart</a></p>
+        </div>
+
+    {% endfor %}
+</div>
+
+</body>
+</html>
+
+
+
+

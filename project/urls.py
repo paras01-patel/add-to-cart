@@ -1,5 +1,5 @@
 """
-URL configuration for project project.
+URL configuration for myproject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -16,15 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app import views
-
-
+from app.views import *
 urlpatterns = [
-    path('', views.landing, name='landing'),
-    path('show/', views.show, name='show'),
-    path('save/<int:pk>/',views.save,name='save'),
-    path('show_cart',views.show_cart,name='show_cart'),
-    path('deete/<int:pk>/',views.delete,name='delete')
-    
-    
+    path('admin/', admin.site.urls),
+    path('',landing,name='landing'),
+    path('add_to_cart',add_to_cart,name='add_to_cart'),
+    path('show',show,name='show'),
+    path('save/<int:pk>/',save,name='save'),
+    path('my_cart/',my_cart,name='my_cart'),
+    path('delete-cart/<int:id>/', delete_cart_item, name='delete_cart_item'),
+
+
+
+
+
 ]
